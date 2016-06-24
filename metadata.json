@@ -1,6 +1,6 @@
 {
   "name": "Chaordix-ssm",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Todd Courtnage <todd@chaordix.com>",
   "summary": "Install and configure the AWS EC2 Simple Systems Manager (SSM, i.e. the EC2 run command)",
   "license": "Apache-2.0",
@@ -13,6 +13,13 @@
       "operatingsystemrelease": [
         "12.04",
         "14.04"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
       ]
     }
   ],
