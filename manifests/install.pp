@@ -14,6 +14,18 @@ class ssm::install inherits ssm {
         subscribe => Exec['download_ssm-agent'],
       }
     }
+    'CentOS': {
+      exec { 'download_ssm-agent':
+        command => "/usr/bin/wget -N https://amazon-ssm-${::region}.s3.amazonaws.com/latest/linux_amd64/amazon-ssm-agent.rpm -O /opt/amazon-ssm-agent.rpm",
+        path    => '/bin:/usr/bin:/usr/local/bin:/usr/sbin',
+        creates => '/opt/amazon-ssm-agent.rpm',
+      }
+      package { 'amazon-ssm-agent':
+        provider  => 'rpm',
+        source    => '/opt/amazon-ssm-agent.rpm',
+        subscribe => Exec['download_ssm-agent'],
+      }
+    }
     default: { fail("The ${module_name} module is not supported on ${::osfamily}/${::operatingsystem}.") }
   }
 }
