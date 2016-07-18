@@ -1,6 +1,6 @@
 {
   "name": "Chaordix-ssm",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Todd Courtnage <todd@chaordix.com>",
   "summary": "Install and configure the AWS EC2 Simple Systems Manager (SSM, i.e. the EC2 run command)",
   "license": "Apache-2.0",
@@ -21,6 +21,40 @@
         "6",
         "7"
       ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+     {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Amazon",
+      "operatingsystemrelease": [
+        "2016.03"
+      ]
     }
   ],
   "dependencies": [
@@ -31,4 +65,3 @@
   ],
   "data_provider": null
 }
-
