@@ -1,3 +1,6 @@
+##2016-10-24 - qivers 0.4.0
+  * Added Debian-specific service support
+
 ##2016-07-16 - Shawn Sterling <shawn@systemtemplar.org> 0.3.0
  * Moved OS specifics into the params
  * Added Amazon, RedHat, Debian, OracleLinux, Scientific support
