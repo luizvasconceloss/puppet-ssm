@@ -1,34 +1,69 @@
-# Class: ssm
-# ===========================
+# == Class: ssm
 #
 # Downloads and installs the amazon-ssm-agent, i.e. the EC2 run command agent
 #
-# Parameters
-# ----------
+# == Parameters
 #
-# * `region`
-# The region to download the agent in. Default is undef.
+# [*custom_path*]
+#   String indicating the location where the package will be downloaded. If the
+#   path specified is not present, the module will create it.
+#   Defaults to `/opt/amazon-ssm-agent.${package}`.
 #
-# Examples
-# --------
+# [*custom_url*]
+#   String indicating the URL to use when downloading the SSM package.
+#   Defaults to the standard URL for the AWS region specified in `ssm::region`.
+#
+# [*flavor*]
+#   String specifying the OS flavor. This is used when building the default
+#   download URL. The correct value is automatically set based on the platform.
+#
+# [*manage_service*]
+#   Bool. If set, the module will manage the SSM service. Defaults to `true`.
+#
+# [*package*]
+#   String representing the package type. The correct type, either `rpm` or
+#   `deb`, is automatically set based on the platform.
+#
+# [*provider*]
+#   String indicating the type of package provider to use when installing the
+#   SSM agent. The correct type, either `rpm` or `dpkg`, is automatically set
+#   based on the platform.
+#
+# [*region*]
+#   String indicating the AWS region in which the instance is running. Required.
+#   Defaults to `undef`.
+#
+# [*service_enable*]
+#   Bool. If set, the module will ensure the SSM service is enabled and
+#   automatically started by the service manager. Only valid when
+#   `manage_service` is `true`. Defaults to `true`.
+#
+# [*service_ensure*]
+#   String indicating the desired state of the SSM service. Only valid when
+#   `manage_service` is `true`. Defaults to `running`.
+#
+# [*service_name*]
+#   String indicating the name of the SSM service. The correct value is
+#   automatically determined based on the platform.
+#
+# == Examples
 #
 # @example
 #    class { 'ssm':
 #      region => 'us-east-1',
 #    }
 #
-# Authors
-# -------
+# == Authors
 #
 # Todd Courtnage <todd@courtnage.ca>
 # Shawn Sterling <shawn@systemtemplar.org>
 #
-# Copyright
-# ---------
+# == Copyright
 #
 # Copyright 2016 Todd Courtnage
 #
 # lint:ignore:80chars
+#
 class ssm (
   $custom_path    = $ssm::params::custom_path,
   $custom_url     = $ssm::params::custom_url,
@@ -37,6 +72,8 @@ class ssm (
   $package        = $ssm::params::package,
   $provider       = $ssm::params::provider,
   $region         = $ssm::params::region,
+  $service_enable = $ssm::params::service_enable,
+  $service_ensure = $ssm::params::service_ensure,
   $service_name   = $ssm::params::service_name,
 ) inherits ssm::params { # lint:ignore:class_inherits_from_params_class
 
@@ -76,6 +113,8 @@ class ssm (
 
   class { 'ssm::service':
     manage_service => $manage_service,
+    service_enable => $service_enable,
+    service_ensure => $service_ensure,
     service_name   => $service_name,
   }
 
