@@ -45,6 +45,14 @@ class ssm::service(
           require   => Class['ssm::install'],
         }
       }
+      'CentOS': {
+        service { $service_name:
+          ensure    => $service_ensure,
+          enable    => $service_enable,
+          subscribe => Package['amazon-ssm-agent'],
+          require   => Class['ssm::install'],
+        }
+      }
       default: {
         service { $service_name:
           ensure     => $service_ensure,
