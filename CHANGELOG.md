@@ -1,3 +1,5 @@
+## 2017-08-22 - pscadiz 0.6.0
+ * Added CentOS and Amazon service support
 ## 2016-10-24 - qivers 0.4.0
   * Added Debian-specific service support
 
