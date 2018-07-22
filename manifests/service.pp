@@ -53,6 +53,14 @@ class ssm::service(
           require   => Class['ssm::install'],
         }
       }
+      'SLES': {
+        service { $service_name:
+          ensure    => $service_ensure,
+          enable    => $service_enable,
+          subscribe => Package['amazon-ssm-agent'],
+          require   => Class['ssm::install'],
+        }
+      }
       'Amazon': {
         service { $service_name:
           ensure    => $service_ensure,

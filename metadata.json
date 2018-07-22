@@ -56,6 +56,12 @@
       "operatingsystemrelease": [
         "2016.03"
       ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "12"
+      ]
     }
   ],
   "dependencies": [

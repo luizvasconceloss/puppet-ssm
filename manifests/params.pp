@@ -11,7 +11,7 @@ class ssm::params {
   $service_ensure = 'running'
 
   case $::operatingsystem {
-    'Amazon', 'CentOS', 'OracleLinux', 'RedHat', 'Scientific': {
+    'Amazon', 'CentOS', 'OracleLinux', 'RedHat', 'Scientific', 'SLES': {
       $service_name = 'amazon-ssm-agent'
       $package = 'rpm'
       $provider = 'rpm'
